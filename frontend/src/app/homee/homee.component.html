@@ -1,7 +1,13 @@
-<h1>Upload your files!</h1>
+
+<h4>Project title</h4>
+<input>
+<h4>Description</h4>
+<input>
+
+<h4>Upload your files!</h4>
 <div>
   <div *ngIf="error">
-    {{ error.message }}
+    {{ error }}
   </div>
   <div *ngIf="uploadResponse.status === 'error'">
     {{ uploadResponse.message }}
