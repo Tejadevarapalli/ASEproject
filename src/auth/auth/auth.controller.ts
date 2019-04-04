@@ -40,7 +40,6 @@ export class AuthController {
   uploadAvatar(@Param('userid') userId, @UploadedFile() file) {
 
     this.userService.setAvatar(Number(userId), `${this.SERVER_URL}${file.path}`);
-
   }
 
   @Get('avatars/:fileId')

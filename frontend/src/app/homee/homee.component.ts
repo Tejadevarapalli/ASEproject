@@ -16,6 +16,7 @@ export class HomeeComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private uploadService: UploadService){ }
 
+
   ngOnInit() {
     this.form = this.formBuilder.group({
       avatar: ['']
@@ -25,6 +26,8 @@ export class HomeeComponent implements OnInit {
   onFileChange(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      console.log(file);
+      console.log(this.form.get('avatar'));
       this.form.get('avatar').setValue(file);
     }
   }
@@ -32,10 +35,17 @@ export class HomeeComponent implements OnInit {
   onSubmit() {
     const formData = new FormData();
     formData.append('file', this.form.get('avatar').value);
-
+    console.log(this.form.get('avatar').value);
     this.uploadService.upload(formData, this.userId).subscribe(
       (res) => this.uploadResponse = res,
       (err) => this.error = err
     );
+
+    console.log(this.uploadResponse);
+    console.log(this.error);
+  }
+
+  submit() {
+
   }
 }
